@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Search Engine</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./boostrap/css/bootstrap.css">
+    
 </head>
-<body>
-    <h1>Image Search Engine</h1>
-    <form id="search-form">
+<body class="bg-primary">
+    <h1>Search any Image</h1>
+    <form id="search-form" class="col-md-4 rounded ">
         <input type="text" id="search-box" placeholder="Search anything here...">
-        <button>Search</button>
+        <button type="button">Search</button>
         
     </form>
-    <div id="search-result"></div>
+    <div id="search-result" class="row col-12">
+        
+    </div>
     <button id="show-more-btn">Show more</button>
 
 
 
     <script src="script.js"></script>
+    <script src="./boostrap/js/bootstrap.js"></script>
 </body>
 </html>
