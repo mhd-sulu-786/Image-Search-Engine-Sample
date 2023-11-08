@@ -13,7 +13,7 @@
         <input type="text" id="search-box" placeholder="Search anything here...">
         <button type="submit">Search</button>
     </form>
-    <div id="search-result" class="row"></div>
+    <footer id="search-result" class="row"></footer>
     <button id="show-more-btn">Show more</button>
 
     <script>
@@ -39,9 +39,9 @@ async function searchImages() {
 
     const results = data.results;
     searchResult.innerHTML += results.map((result) => `
-    <div class="col-md-4">
+    <div class="col-md-4" id="images">
         <a href="${result.links.html}" target="_blank">
-            <img src="${result.urls.small}" alt="${result.alt_description}" class="img-fluid">
+            <img src="${result.urls.small}" alt="${result.alt_description}" class="img-fluid" id="imgs">
         </a>
     </div>
 `).join('');
