@@ -5,76 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Search Engine</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 </head>
-<body class="bg-primary">
-    <h1>Search any Image</h1>
-    <form id="search-form" class="col-md-4 rounded">
-        <input type="text" id="search-box" placeholder="Search anything here...">
-        <button type="submit">Search</button>
-    </form>
-    <footer id="search-result" class="row"></footer>
+<body>
+<div>
+
+    <h1 class="header"> Image Search <span style="color: #ff3929;"> Engine</span> </h1>
+    <form id="search-form">
+        <input type="text" id="search-box" placeholder="Search here...">
+        <button>Search</button>
+        
+    </form> 
+    <div id="search-result"></div>
     <button id="show-more-btn">Show more</button>
-
-    <script>
-        const accessKey = "t8XmD2UQODzYAD8sCjTEF9PPA-mQG5CMvFrNHB01qgA";
-
-const searchForm = document.getElementById("search-form");
-const searchBox = document.getElementById("search-box");
-const searchResult = document.getElementById("search-result");
-const showMoreBtn = document.getElementById("show-more-btn");
-
-let keyword = "";
-let page = 1;
-
-async function searchImages() {
-    keyword = searchBox.value;
-    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=12`;
-
-    const response = await fetch(url);
-    const data = await response.json();
-    if (page === 1) {
-        searchResult.innerHTML = "";
-    }
-
-    const results = data.results;
-    searchResult.innerHTML += results.map((result) => `
-    <div class="col-md-4" id="images">
-        <a href="${result.links.html}" target="_blank">
-            <img src="${result.urls.small}" alt="${result.alt_description}" class="img-fluid" id="imgs">
-        </a>
-    </div>
-`).join('');
+</div> 
+   
 
 
-    showMoreBtn.style.display = "block";
-
-    // Add click event listeners for opening larger images
-    const imageLinks = searchResult.querySelectorAll("a");
-    imageLinks.forEach((imageLink, index) => {
-        imageLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.open(results[index].urls.full, "_blank");
-        });
-    });
-}
-
-searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    page = 1;
-    searchImages();
-});
-
-showMoreBtn.addEventListener("click", () => {
-    page++;
-    searchImages();
-});
-
-// Initial search on page load
-searchImages();
-
-    </script>
-    <script src="script.js">  </script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html>  
